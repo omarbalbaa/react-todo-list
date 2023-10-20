@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useRef, useState } from "react";
 
 function App() {
+  const [tasks, setTasks] = useState([]);
+  const inputRef = useRef();
+
+  const handleAddTask = () => {
+    const text = inputRef.current.value;
+    const newTask = {completed: false, text}
+    setTasks([...tasks, newTask]);
+    inputRef.current.value = "";
+  };
+
+  const handleItemDone = (index) => {
+    const newTasks = [...tasks];
+    newTasks[index].completed = !newTasks[index].completed;
+    setTasks([newTasks]);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>To Do List</h2>
+      <div className="to-do-container">
+        <ul>
+          {tasks.map(({text}, index) => {
+            return <li key={index} onClick={()=>handleItemDone(index)}>{text}</li>;
+          })}
+        </ul>
+        <input ref={inputRef} placeholder="Enter task..." />
+        <button onClick={handleAddTask}>Add</button>
+      </div>
     </div>
   );
 }
