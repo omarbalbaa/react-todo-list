@@ -15,7 +15,7 @@ function App() {
   const handleItemDone = (index) => {
     const newTasks = [...tasks];
     newTasks[index].completed = !newTasks[index].completed;
-    setTasks([newTasks]);
+    setTasks(newTasks);
   }
 
   return (
@@ -23,8 +23,8 @@ function App() {
       <h2>To Do List</h2>
       <div className="to-do-container">
         <ul>
-          {tasks.map(({text}, index) => {
-            return <li key={index} onClick={()=>handleItemDone(index)}>{text}</li>;
+          {tasks.map(({text, completed}, index) => {
+            return <li className={completed ? "done" : ""} key={index} onClick={()=>handleItemDone(index)}>{text}</li>;
           })}
         </ul>
         <input ref={inputRef} placeholder="Enter task..." />
