@@ -10,12 +10,22 @@
 }
 
 .to-do-container ul li {
-    width: 100%;
+    width: 80%;
     overflow-wrap: break-word;
-    list-style-type: "⭕";
+    list-style-type: "📌";
     cursor: pointer;
 }
 
 .done {
     text-decoration: line-through;
+}
+
+.item {
+    display: flex;   
+    justify-content: space-between;
+    align-items: center;
+}
+
+.trash {
+    cursor: pointer;
 }
