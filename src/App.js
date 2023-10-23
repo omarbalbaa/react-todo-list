@@ -23,6 +23,11 @@ function App() {
     newTasks.splice(index, 1);
     setTasks(newTasks);
   };
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleAddTask();
+    }
+  };
 
   return (
     <div className="App">
@@ -39,12 +44,18 @@ function App() {
                 >
                   {text}
                 </li>
-                <span className="trash" onClick={() => handleDeleteItem(index)}>❌</span>
+                <span className="trash" onClick={() => handleDeleteItem(index)}>
+                  ❌
+                </span>
               </div>
             );
           })}
         </ul>
-        <input ref={inputRef} placeholder="Enter task..." />
+        <input
+          onKeyDown={handleKeyDown}
+          ref={inputRef}
+          placeholder="Enter task..."
+        />
         <button onClick={handleAddTask}>Add</button>
       </div>
     </div>
