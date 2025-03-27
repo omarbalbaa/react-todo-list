@@ -1,5 +1,6 @@
 import "./App.css";
 import { useRef, useState } from "react";
+import { ClipboardList, X } from "lucide-react"
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -31,8 +32,8 @@ function App() {
 
   return (
     <div className="App">
-      <h2>📝 To Do List</h2>
-      <div className="to-do-container">
+      <ClipboardList/> <h2> To Do List</h2>
+      <div className="tasks-container">
         <ul>
           {tasks.map(({ text, completed }, index) => {
             return (
@@ -45,7 +46,7 @@ function App() {
                   {text}
                 </li>
                 <span className="trash" onClick={() => handleDeleteItem(index)}>
-                  ❌
+                  <X/>
                 </span>
               </div>
             );

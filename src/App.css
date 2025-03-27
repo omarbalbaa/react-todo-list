@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=DynaPuff:wght@500&family=Kanit:wght@500&family=Raleway:wght@500;700&family=Ubuntu&display=swap');
 
 
@@ -8,19 +11,19 @@
     padding: 25px 15px;
 }
 
-.to-do-container{
+.tasks-container{
     display: flex;
     flex-direction: column;
 }
 
-.to-do-container ul li {
+.tasks-container ul li {
     width: 80%;
     overflow-wrap: break-word;
     list-style-type: "📌";
     cursor: pointer;
 }
 
-.to-do-container button {
+.tasks-container button {
     margin-top: 10px;
     cursor: pointer;
 }
